@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="fdod">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/fdod.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

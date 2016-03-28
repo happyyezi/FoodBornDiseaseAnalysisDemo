@@ -7,8 +7,10 @@
 	<title>食源性疾病关联性分析系统</title>
 	<link href="_assets/_css/main.css" rel="stylesheet" type="text/css" />
     <link href="_assets/_css/style.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="/foodborn/js/jquery-1.3.2.min.js"></script>
-    <script type="text/javascript" src="/foodborn/js/UploadFile.js"></script>
+    <%--<script type="text/javascript" src="/foodborn/js/jquery-1.3.2.min.js"></script>--%>
+    <%--<script type="text/javascript" src="/foodborn/js/UploadFile.js"></script>--%>
+	<script type="text/javascript" src="/js/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="/js/UploadFile.js"></script>
 </head>
 <body>
 	<div id="top">
@@ -42,8 +44,8 @@
 								<h1><span class="blue">数据处理</span></h1>
 								<span class="orange">导入数据:</span>
 								<div class="upload_box_step1">
-									<form name="sporadic_upload_form_step1" id="sporadic_upload_form_step1" action="sporadic_upload_step1.do" method="post" enctype="multipart/form-data" target="sporadic_upload_iframe_step1">
-										<input type='text' name='filetxt' class='txt filetxt' id='filetxt_step1' /> 
+									<form  id="sporadic_upload_form_step1" action="sporadic_upload_step1.do" method="post" enctype="multipart/form-data" target="sporadic_upload_iframe_step1">
+										<input type='text' name='finame="sporadic_upload_form_step1"letxt' class='txt filetxt' id='filetxt_step1' />
 										<input type='button' class='button white browse' value='浏 览' onclick="sporadic_file_step1.click()" /> 
 										<input type="file" name="sporadic_file_step1" id="sporadic_file_step1" onchange="document.getElementById('filetxt_step1').value=this.value" style="display: none"> 
 										<input type="button"  class="button white submit" onclick="uploadStep1()" value="开始处理" />
@@ -77,16 +79,17 @@
 								<h1><span class="blue">数据分析</span></h1>
 								<span class="orange">导入分析文件:</span><br />
 								<div class="upload_box_step2">
-									<form action="sporadic_upload_step2.shtml" method="post" enctype="multipart/form-data">
+									<form id="sporadic_upload_form_step2" action="sporadic_upload_step2.do" method="post" enctype="multipart/form-data" target="sporadic_upload_iframe_step2">
 										<div class="importpre_box">
 											<span class="orange">直接导入预处理文件？
-												<input type="checkbox" class="checkbox" />
+												<input type="checkbox" class="checkbox" name = "step2_checkbox" id = "step2_checkbox" value = "check" onchange="todisablebtn()"/>
+												<input type="hidden" name="step2_checkbox"/>
 											</span>
 										</div>
 										<div class="uploadfile_box">
 											<input type='text' name='filetxt' class='txt filetxt' id='filetxt_step2' /> 
-											<input type='button' class='button white browse' value='浏 览' onclick="sporadic_file_step2.click()" /> 
-											<input type="file" id="sporadic_file_step2" onchange="document.getElementById('textfield_step2').value=this.value" style="display: none">
+											<input type='button' class='button white browse' id = 'browbtn' value='浏 览' onclick="sporadic_file_step2.click()" />
+											<input type="file" name = "sporadic_file_step2" id="sporadic_file_step2" onchange="document.getElementById('filetxt_step2').value=this.value" style="display: none">
 										</div>
 										<div class="clusters_num_box">
 											<span class="orange">聚类数目：
@@ -95,11 +98,12 @@
 										</div>
 										<div class="support_num_box">
 											<span class="orange">支持度设定：
-												<input type="text" class="txt support_num" id="support_num_step2" value="30" />
+												<input type="text" class="txt support_num" id="support_num_step2" name = "support_txt_val" value="30" />
 											</span>
 										</div>
-										<input type="submit" name="submit" class="button white submit" value="开始分析" />
+										<input type="submit" class="button white submit" onclick="uploadStep2()" value="开始分析" />
 									</form>
+									<iframe id="sporadic_upload_iframe_step2" name="sporadic_upload_iframe_step2" style="display: none"></iframe>
 								</div>
 								<div class="progress_box" id="progress_box_step2">
 									<div class="progress" id="progress_step2">
